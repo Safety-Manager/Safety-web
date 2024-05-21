@@ -11,16 +11,20 @@
     "@types/node": "^16.18.97",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "axios": "^1.7.1",
+    "craco": "^0.0.3",
     "eslint-config-react-app": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -53,6 +57,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.3.0",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "typescript-eslint": "^7.9.0"
   }

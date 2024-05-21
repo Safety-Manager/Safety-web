@@ -1,14 +1,21 @@
+import Router from '@components/Router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        retry: false,
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-3xl font-bold underline bg-red-600">
-          Hello world!
-        </h1>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Router />
+    </QueryClientProvider>
   );
 }
 
