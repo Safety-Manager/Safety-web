@@ -1,9 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/2EfsxEOuvKS
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-
 import { Link } from 'react-router-dom';
 
 export default function Login() {
@@ -12,29 +6,29 @@ export default function Login() {
       <div className="w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 ">
-            Sign in to your account
+            관리자 로그인
           </h2>
         </div>
         <form className="mt-8 space-y-6" action="#" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
+              <label htmlFor="usrId" className="sr-only">
+                아이디
               </label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
+                id="userId"
+                name="userId"
+                type="userId"
+                autoComplete="userId"
                 required
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 "
-                placeholder="Email address"
+                placeholder="아이디를 입력해주세요."
               />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+                비밀번호
               </label>
               <input
                 id="password"
@@ -43,7 +37,7 @@ export default function Login() {
                 autoComplete="current-password"
                 required
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 "
-                placeholder="Password"
+                placeholder="비밀번호를 입력해주세요."
               />
             </div>
           </div>
@@ -52,7 +46,7 @@ export default function Login() {
               type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 "
             >
-              Sign in
+              로그인
             </button>
           </div>
         </form>
