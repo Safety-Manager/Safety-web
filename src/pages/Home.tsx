@@ -98,10 +98,13 @@ export default function Home() {
             </div>
             <div>
               <h4 className="mb-4 text-lg font-bold text-gray-50">정책</h4>
-              <Link to="#" className="hover:text-slate-300">
+              <Link to="/Teams" className="hover:text-slate-300">
                 이용약관
               </Link>
-              <Link to="#" className="mb-2 mt-2 block hover:text-slate-300">
+              <Link
+                to="/Information"
+                className="mb-2 mt-2 block hover:text-slate-300"
+              >
                 개인정보 처리방침
               </Link>
             </div>
