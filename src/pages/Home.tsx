@@ -2,37 +2,67 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
   const [showNextIcon, setShowNextIcon] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = ['/main.png', '/main2.png'];
+  const images = ['/main.jpg', '/main2.png', 'main.jpg'];
+
+  const handleNextImage = () => {
+    setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+  };
 
   return (
     <>
-      <section className="bg-gray-100 py-12">
-        <div className="container mx-auto px-4 text-center md:px-6">
+      <div className="bg-background flex min-h-screen w-full">
+        <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              className="h-16 w-16 rounded-md shadow-lg"
+              src="/logo.png"
+              alt="logo"
+            />
+            <span className="text-xl font-semibold">모두 안전</span>
+          </Link>
+          <nav className=" space-x-4 md:flex">
+            <Link
+              to="/Teams"
+              className="text-sm font-medium underline-offset-4 hover:underline"
+            >
+              이용약관
+            </Link>
+            <Link
+              to="/Information"
+              className="text-sm font-medium underline-offset-4 hover:underline"
+            >
+              개인정보 처리방침
+            </Link>
+          </nav>
+        </header>
+        <div className="container mx-auto mt-36 flex justify-center px-4 text-center md:mt-0 md:px-6">
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
             <div>
-              <div className="grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-                <div className="flex flex-col gap-4 p-6 shadow-md transition-all hover:shadow-lg">
-                  <SearchIcon className="h-8 w-8 text-gray-500" />
+              <div className="grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 ">
+                <div className="flex flex-col items-center gap-4 p-6 shadow-md transition-all hover:shadow-lg">
+                  <SearchIcon className="flex   text-gray-500" />
                   <h3 className="text-xl font-bold">법령 빠른 검색</h3>
                   <p className="text-gray-500">
                     관련 법률을 통합적으로 제공하여 안전 관리자들이 필요한
                     정보를 쉽게 찾을 수 있습니다.
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 p-6 shadow-md transition-all hover:shadow-lg">
-                  <Safety className="h-8 w-8 text-gray-500" />
-                  <h3 className="text-xl font-bold">안전 교육 매칭</h3>
+                <div className="mt-1 flex flex-col items-center gap-4 p-6 shadow-md transition-all hover:shadow-lg">
+                  <Safety className="text-gray-500" />
+                  <h3 className="mt text-xl font-bold">안전 교육 매칭</h3>
                   <p className="text-gray-500">
                     안전 교육을 필요로 하는 기업과 안전 교육을 제공하는 업체를
                     연결해주는 서비스를 제공합니다.
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 p-6 shadow-md transition-all hover:shadow-lg">
-                  <CheckIcon className="h-8 w-8 text-gray-500" />
+                <div className="flex flex-col items-center gap-4 p-6 shadow-md transition-all hover:shadow-lg">
+                  <CheckIcon className=" text-gray-500" />
                   <h3 className="text-xl font-bold">커뮤니티</h3>
                   <p className="text-gray-500">
                     안전 관리자들이 소통하고 필요한 정보를 공유할 수 있는
@@ -58,61 +88,23 @@ export default function Home() {
               </div>
             </div>
             <div className="group relative flex justify-center">
-              <img
-                src="/main.jpg"
-                alt="Example"
-                className="h-auto w-full max-w-[300px] transform rounded-lg shadow-lg transition-transform duration-500 ease-in-out group-hover:translate-x-4"
-              />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 transform opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-                <NextIcon className="h-8 w-8 text-gray-900" />
-              </div>
+              <AnimatePresence>
+                <motion.img
+                  key={currentIndex}
+                  src={images[currentIndex]}
+                  alt="Example"
+                  className="h-auto w-full max-w-[300px] transform rounded-lg shadow-lg"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  onClick={handleNextImage}
+                />
+              </AnimatePresence>
             </div>
           </div>
         </div>
-      </section>
-      <footer className="bg-gray-800 py-10 text-gray-400">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div>
-              <h4 className="mb-4 text-lg font-bold text-gray-50">
-                프로젝트 개요
-              </h4>
-              <Link to="#" className="mb-2 block hover:text-slate-300">
-                소개
-              </Link>
-              <Link to="#" className="mb-2 block hover:text-slate-300">
-                목표
-              </Link>
-            </div>
-            <div>
-              <h4 className="mb-4 text-lg font-bold text-gray-50">고객 지원</h4>
-              <Link to="#" className="mb-2 block hover:text-slate-300">
-                도움말 센터
-              </Link>
-              <Link to="#" className="mb-2 block hover:text-slate-300">
-                고객 서비스
-              </Link>
-            </div>
-            <div>
-              <h4 className="mb-4 text-lg font-bold text-gray-50">정책</h4>
-              <Link to="/Teams" className="hover:text-slate-300">
-                이용약관
-              </Link>
-              <Link
-                to="/Information"
-                className="mb-2 mt-2 block hover:text-slate-300"
-              >
-                개인정보 처리방침
-              </Link>
-            </div>
-          </div>
-          <div className="mt-8 text-center">
-            <p className="text-sm">
-              &copy; 2024 Your Company. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      </div>
     </>
   );
 
@@ -133,6 +125,24 @@ export default function Home() {
         <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
         <path d="M10 2c1 .5 2 2 2 5" />
       </svg>
+    );
+  }
+
+  function FeatureCard({
+    icon,
+    title,
+    description,
+  }: {
+    icon: any;
+    title: string;
+    description: string;
+  }) {
+    return (
+      <div className="flex flex-col gap-4 p-6 shadow-md transition-all hover:shadow-lg">
+        {icon}
+        <h3 className="text-xl font-bold">{title}</h3>
+        <p className="text-gray-500">{description}</p>
+      </div>
     );
   }
 
@@ -177,8 +187,8 @@ export default function Home() {
   function CheckIcon(props: any) {
     return (
       <svg
-        width="24"
-        height="24"
+        width="28"
+        height="28"
         viewBox="0 0 24 24"
         fill="none"
         strokeWidth="2"
@@ -276,7 +286,24 @@ export default function Home() {
       </svg>
     );
   }
-
+  function MountainIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+      </svg>
+    );
+  }
   function Logo(props: any) {
     return (
       <svg
