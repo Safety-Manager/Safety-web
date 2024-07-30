@@ -8,7 +8,13 @@ export default function Home() {
   const [showNextIcon, setShowNextIcon] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = ['/main.jpg', '/main2.png', 'main.jpg'];
+  const images = [
+    '/main.jpg',
+    '/home.jpg',
+    'search.jpg',
+    'searchinfo.jpg',
+    'board.jpg',
+  ];
 
   const handleNextImage = () => {
     setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
