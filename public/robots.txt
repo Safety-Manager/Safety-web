@@ -1,3 +1,2 @@
-https://modusafe.site/robots.txt
 User-agent: *
 Allow: /
