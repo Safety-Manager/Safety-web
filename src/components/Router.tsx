@@ -14,7 +14,7 @@ export default function Router() {
         <Route path="/main" element={<Main />} />
         <Route path="/Information" element={<Information />} />
         <Route path="/Teams" element={<Teams />} />
-        <Route path="*" element={<Navigate replace to="/main" />} />
+        <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </>
   );
